@@ -1665,7 +1665,7 @@ function wireConsentGate() {
     if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
   };
 
-  pane.onscroll = () => {
+  const markReadIfAtBottom = () => {
     if (pane.scrollTop + pane.clientHeight < pane.scrollHeight - 24) return;
     const key = state.consentTab === "terms" ? "readTerms" : "readPrivacy";
     if (state[key]) return;
@@ -1675,6 +1675,11 @@ function wireConsentGate() {
     const newPane = document.getElementById("consent-pane");
     if (newPane) newPane.scrollTop = savedTop;
   };
+
+  pane.onscroll = markReadIfAtBottom;
+  // on a tall screen the whole document can fit without any overflow, so no
+  // "scroll" event ever fires — treat that as already having read it.
+  markReadIfAtBottom();
 }
 
 /* ---------------- actions ---------------- */
