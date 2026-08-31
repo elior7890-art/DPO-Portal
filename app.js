@@ -1355,7 +1355,7 @@ function renderQuestionnaireTab() {
           <span style="display:flex;align-items:flex-start;gap:9px;font-size:14px">
             <input type="${multi ? "checkbox" : "radio"}" id="${inputId}" name="${inputName}" value="${o.v}" ${checked ? "checked" : ""}
               data-qid="${q.id}" data-value="${o.v}" data-multi="${multi ? "1" : "0"}" style="margin-top:2px;flex:none">
-            <span>${o.label}</span>
+            <span style="flex:1;min-width:0">${o.label}</span>
           </span>
         </label>`;
     }).join("");
@@ -1368,7 +1368,7 @@ function renderQuestionnaireTab() {
     const refHtml = q.ref ? `<div id="${base}-ref" style="font-size:11px;color:${mute(70)};margin-top:10px"><span class="sr-only">אסמכתא: </span>${q.ref}</div>` : "";
     return `
       <fieldset ${describedByParts.length ? `aria-describedby="${describedByParts.join(" ")}"` : ""} style="padding:16px;border-radius:8px;background:var(--color-surface);box-shadow:var(--shadow-sm);border:0;margin:0;min-width:0">
-        <legend style="display:flex;align-items:baseline;gap:10px;padding:0;margin-bottom:6px;float:right;width:100%">
+        <legend style="display:flex;align-items:baseline;gap:10px;padding:0;margin-bottom:6px;width:100%">
           <span style="font-size:11px;white-space:nowrap;color:${mute(70)}">${q.id}</span>
           <span style="font-weight:500;font-size:15px">${q.text}</span>
         </legend>
@@ -1386,7 +1386,7 @@ function renderQuestionnaireTab() {
     </li>`).join("");
 
   return `
-  <div role="tabpanel" id="panel-questionnaire" aria-labelledby="tab-questionnaire" tabindex="0" style="display:grid;grid-template-columns:1fr 300px;gap:28px;align-items:start;font-size:15px;line-height:1.6">
+  <div role="tabpanel" id="panel-questionnaire" aria-labelledby="tab-questionnaire" tabindex="0" class="q-layout" style="font-size:15px;line-height:1.6">
     <div>
       <nav aria-label="חלקי השאלון" style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:16px">${partTabsHtml}</nav>
 

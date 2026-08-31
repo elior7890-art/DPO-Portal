@@ -105,6 +105,18 @@ button.compact { min-height: 28px; }
   border: 1px solid var(--color-neutral-700); background: transparent;
 }
 .opt-card.active { border-color: var(--color-accent-500); background: color-mix(in srgb, var(--color-accent) 10%, transparent); }
+.opt-card > span { min-width: 0; }
+.opt-card > span > span:last-child { flex: 1; min-width: 0; }
+
+/* — questionnaire layout: main column + sidebar, stacks on narrow screens.
+   Without min-width:0 (auto by default) a grid track won't shrink past its
+   content's min-content — on a narrow viewport that squeezed the option
+   labels down to a sliver, wrapping every word onto its own line. */
+.q-layout { display: grid; grid-template-columns: 1fr 300px; gap: 28px; align-items: start; min-width: 0; }
+.q-layout > * { min-width: 0; }
+@media (max-width: 860px) {
+  .q-layout { grid-template-columns: 1fr; }
+}
 
 .field-error {
   display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--color-accent-100);
