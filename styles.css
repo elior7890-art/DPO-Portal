@@ -112,11 +112,27 @@ button.compact { min-height: 28px; }
    Without min-width:0 (auto by default) a grid track won't shrink past its
    content's min-content — on a narrow viewport that squeezed the option
    labels down to a sliver, wrapping every word onto its own line. */
-.q-layout { display: grid; grid-template-columns: 1fr 300px; gap: 28px; align-items: start; min-width: 0; }
-.q-layout > * { min-width: 0; }
-@media (max-width: 860px) {
-  .q-layout { grid-template-columns: 1fr; }
+.split-layout {
+  display: grid; grid-template-columns: 1fr var(--aside-w, 300px); gap: 28px; align-items: start; min-width: 0;
 }
+.split-layout > * { min-width: 0; }
+.tri-split {
+  display: grid; grid-template-columns: 1fr 1fr var(--aside-w, 300px); gap: 16px; align-items: start; min-width: 0;
+}
+.tri-split > * { min-width: 0; }
+@media (max-width: 860px) {
+  .split-layout, .tri-split { grid-template-columns: 1fr; }
+}
+
+/* Card/tile grids that reflow their own column count instead of needing a
+   breakpoint — the browser fits as many minmax(...) columns as the row allows. */
+.auto-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(var(--min-col, 220px), 1fr)); gap: 12px; }
+
+/* Data "tables" built from CSS grid rows are wide by nature (many columns of
+   real data) — rather than squeezing them unreadably, let them scroll inside
+   their own box so the page itself never scrolls horizontally. */
+.table-scroll { overflow-x: auto; }
+.table-scroll > * { min-width: var(--table-min-w, 640px); }
 
 .field-error {
   display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--color-accent-100);

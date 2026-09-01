@@ -765,24 +765,26 @@ function renderClients() {
     </div>
 
     <h2 class="sr-only">מדדים כלליים</h2>
-    <ul style="list-style:none;margin:0 0 26px;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:12px">${statsHtml}</ul>
+    <ul class="auto-grid" style="--min-col:150px;list-style:none;margin:0 0 26px;padding:0">${statsHtml}</ul>
 
     <h2 class="sr-only">טבלת פרויקטים</h2>
-    <div style="border-radius:8px;background:var(--color-surface);box-shadow:var(--shadow-sm);overflow:hidden">
-      <table style="display:block;width:100%;border-collapse:collapse">
-        <caption class="sr-only">פרויקטי ציות פעילים: סיווג אבטחה, השלמת שאלון, פערים פתוחים וממתין לסקירה</caption>
-        <thead style="display:block">
-          <tr style="display:grid;grid-template-columns:1.6fr 1fr 1.3fr 0.8fr 1fr 0.9fr;gap:16px;padding:12px 18px;font-size:11px;letter-spacing:0.06em;color:${mute(70)};border-bottom:1px solid var(--color-divider)">
-            <th scope="col" style="font-weight:400;text-align:start">לקוח</th>
-            <th scope="col" style="font-weight:400;text-align:start">סיווג אבטחה</th>
-            <th scope="col" style="font-weight:400;text-align:start">השלמת שאלון</th>
-            <th scope="col" style="font-weight:400;text-align:start">פערים</th>
-            <th scope="col" style="font-weight:400;text-align:start">ממתין לסקירה שלך</th>
-            <th scope="col" style="font-weight:400;text-align:start">פעילות אחרונה</th>
-          </tr>
-        </thead>
-        <tbody style="display:block">${rowsHtml}</tbody>
-      </table>
+    <div class="table-scroll" style="--table-min-w:760px">
+      <div style="border-radius:8px;background:var(--color-surface);box-shadow:var(--shadow-sm);overflow:hidden">
+        <table style="display:block;width:100%;border-collapse:collapse">
+          <caption class="sr-only">פרויקטי ציות פעילים: סיווג אבטחה, השלמת שאלון, פערים פתוחים וממתין לסקירה</caption>
+          <thead style="display:block">
+            <tr style="display:grid;grid-template-columns:1.6fr 1fr 1.3fr 0.8fr 1fr 0.9fr;gap:16px;padding:12px 18px;font-size:11px;letter-spacing:0.06em;color:${mute(70)};border-bottom:1px solid var(--color-divider)">
+              <th scope="col" style="font-weight:400;text-align:start">לקוח</th>
+              <th scope="col" style="font-weight:400;text-align:start">סיווג אבטחה</th>
+              <th scope="col" style="font-weight:400;text-align:start">השלמת שאלון</th>
+              <th scope="col" style="font-weight:400;text-align:start">פערים</th>
+              <th scope="col" style="font-weight:400;text-align:start">ממתין לסקירה שלך</th>
+              <th scope="col" style="font-weight:400;text-align:start">פעילות אחרונה</th>
+            </tr>
+          </thead>
+          <tbody style="display:block">${rowsHtml}</tbody>
+        </table>
+      </div>
     </div>
     <p style="margin-top:14px;font-size:12px;color:${mute(70)}">כל צפייה בפרויקט נרשמת ביומן הגישה של אותו לקוח.</p>
   </main>`;
@@ -824,19 +826,21 @@ function renderAdmin() {
             <button type="button" data-action="open-new-user" aria-label="הוספת משתמש לארגון ${o.name}" class="btn btn-ghost" style="font-size:13px">הוספת משתמש</button>
           </div>
         </div>
-        <table style="display:block;width:100%;border-collapse:collapse">
-          <caption class="sr-only">משתמשי הארגון ${o.name}: תפקיד, הרשאות, כניסה אחרונה ומצב</caption>
-          <thead style="display:block">
-            <tr style="display:grid;grid-template-columns:1.5fr 1fr 1.1fr 0.9fr 0.9fr;gap:14px;padding:10px 16px;font-size:11px;color:${mute(70)};border-bottom:1px solid var(--color-divider)">
-              <th scope="col" style="font-weight:400;text-align:start">משתמש</th>
-              <th scope="col" style="font-weight:400;text-align:start">תפקיד</th>
-              <th scope="col" style="font-weight:400;text-align:start">הרשאות</th>
-              <th scope="col" style="font-weight:400;text-align:start">כניסה אחרונה</th>
-              <th scope="col" style="font-weight:400;text-align:start">מצב</th>
-            </tr>
-          </thead>
-          <tbody style="display:block">${usersHtml}</tbody>
-        </table>
+        <div class="table-scroll" style="--table-min-w:600px">
+          <table style="display:block;width:100%;border-collapse:collapse">
+            <caption class="sr-only">משתמשי הארגון ${o.name}: תפקיד, הרשאות, כניסה אחרונה ומצב</caption>
+            <thead style="display:block">
+              <tr style="display:grid;grid-template-columns:1.5fr 1fr 1.1fr 0.9fr 0.9fr;gap:14px;padding:10px 16px;font-size:11px;color:${mute(70)};border-bottom:1px solid var(--color-divider)">
+                <th scope="col" style="font-weight:400;text-align:start">משתמש</th>
+                <th scope="col" style="font-weight:400;text-align:start">תפקיד</th>
+                <th scope="col" style="font-weight:400;text-align:start">הרשאות</th>
+                <th scope="col" style="font-weight:400;text-align:start">כניסה אחרונה</th>
+                <th scope="col" style="font-weight:400;text-align:start">מצב</th>
+              </tr>
+            </thead>
+            <tbody style="display:block">${usersHtml}</tbody>
+          </table>
+        </div>
       </section>`;
   }).join("");
 
@@ -940,7 +944,7 @@ function renderAdmin() {
       </div>
     </div>
 
-    <div style="display:grid;grid-template-columns:1fr 380px;gap:24px;align-items:start;margin-top:22px">
+    <div class="split-layout" style="--aside-w:380px;margin-top:22px">
       <div style="display:flex;flex-direction:column;gap:12px">${orgsHtml}</div>
       <div style="display:flex;flex-direction:column;gap:16px">
         <section aria-labelledby="admin-form-title" style="padding:18px;border-radius:8px;background:var(--color-surface);box-shadow:var(--shadow-md)">
@@ -1052,13 +1056,13 @@ function renderOverviewTab() {
     </li>`).join("");
 
   return `
-  <div style="display:grid;grid-template-columns:1fr 300px;gap:28px;align-items:start">
+  <div class="split-layout">
     <div role="tabpanel" id="panel-overview" aria-labelledby="tab-overview" tabindex="0">
       <div style="display:flex;align-items:baseline;flex-wrap:wrap;gap:12px;margin-bottom:4px">
         <h2 style="font-size:19px;font-weight:500;margin:0">תמונת מצב לפי תחום</h2>
         <div style="font-size:13px;color:${mute(70)}">אין ציון כללי אחד — כל תחום נמדד בנפרד</div>
       </div>
-      <ul style="list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:12px">${modulesHtml}</ul>
+      <ul class="auto-grid" style="--min-col:260px;list-style:none;margin:16px 0 0;padding:0">${modulesHtml}</ul>
     </div>
     <div style="display:flex;flex-direction:column;gap:12px">
       <section aria-labelledby="next-step-title" style="padding:16px;border-radius:8px;background:var(--color-surface);box-shadow:var(--shadow-sm)">
@@ -1094,7 +1098,7 @@ function renderFilesTab() {
     </li>`).join("");
 
   return `
-  <div role="tabpanel" id="panel-files" aria-labelledby="tab-files" tabindex="0" style="display:grid;grid-template-columns:1fr 300px;gap:28px;align-items:start">
+  <div role="tabpanel" id="panel-files" aria-labelledby="tab-files" tabindex="0" class="split-layout">
     <div>
       <h2 style="font-size:19px;font-weight:500;margin:0 0 6px">קבצים</h2>
       <div style="font-size:13px;color:${mute(70)};margin-bottom:18px">מוצפנים בהעלאה ובאחסון. כל הורדה נרשמת ביומן.</div>
@@ -1103,11 +1107,13 @@ function renderFilesTab() {
         <button type="button" class="btn btn-primary">בחר מהמחשב</button>
         <div style="font-size:12px;color:${mute(70)};margin-top:10px">PDF, Word, Excel, תמונות · עד 50MB לקובץ</div>
       </div>
-      <div style="border-radius:8px;background:var(--color-surface);box-shadow:var(--shadow-sm);overflow:hidden">
-        <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:14px;padding:11px 16px;font-size:11px;color:${mute(70)};border-bottom:1px solid var(--color-divider)">
-          <div>קובץ</div><div>רגישות</div><div>הועלה</div><div>סטטוס</div>
+      <div class="table-scroll" style="--table-min-w:480px">
+        <div style="border-radius:8px;background:var(--color-surface);box-shadow:var(--shadow-sm);overflow:hidden">
+          <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:14px;padding:11px 16px;font-size:11px;color:${mute(70)};border-bottom:1px solid var(--color-divider)">
+            <div>קובץ</div><div>רגישות</div><div>הועלה</div><div>סטטוס</div>
+          </div>
+          ${filesHtml}
         </div>
-        ${filesHtml}
       </div>
     </div>
     <div style="display:flex;flex-direction:column;gap:12px">
@@ -1138,7 +1144,7 @@ function renderSecurityTab() {
     </div>`).join("");
 
   return `
-  <div role="tabpanel" id="panel-security" aria-labelledby="tab-security" tabindex="0" style="display:grid;grid-template-columns:1fr 340px;gap:28px;align-items:start">
+  <div role="tabpanel" id="panel-security" aria-labelledby="tab-security" tabindex="0" class="split-layout" style="--aside-w:340px">
     <div>
       <h2 style="font-size:19px;font-weight:500;margin:0 0 6px">סיווג רמת אבטחה</h2>
       <div style="font-size:13px;color:${mute(70)};margin-bottom:20px">הצעה אוטומטית מתוך תשובות השאלון. אתה מאשר או דורס.</div>
@@ -1162,7 +1168,7 @@ function renderSecurityTab() {
 
       <div style="padding:18px;border-radius:8px;background:var(--color-neutral-900);box-shadow:var(--shadow-sm)">
         <div style="font-size:11px;letter-spacing:0.08em;color:var(--color-accent-200);margin-bottom:12px">חובות שנגזרות מרמה בינונית</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px 20px">${dutiesHtml}</div>
+        <div class="auto-grid" style="--min-col:200px">${dutiesHtml}</div>
       </div>
     </div>
     <section aria-labelledby="security-basis-title" style="padding:16px;border-radius:8px;background:var(--color-surface);box-shadow:var(--shadow-sm)">
@@ -1197,7 +1203,7 @@ function renderDocsTab() {
       </div>
       <div style="margin-right:auto"><button type="button" class="btn btn-primary">הפקת טיוטה חדשה</button></div>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">${docsHtml}</div>
+    <div class="auto-grid" style="--min-col:240px">${docsHtml}</div>
   </div>`;
 }
 
@@ -1284,7 +1290,7 @@ function renderPrivateTab() {
       </div>
       <div style="font-size:13px;color:${mute(70)};margin-bottom:22px">כל מה שבמסגרת המסומנת הזו גלוי רק לך. הלקוח לא רואה שהלשונית הזו קיימת.</div>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr 300px;gap:16px;align-items:start">
+      <div class="tri-split">
         <div style="display:flex;flex-direction:column;gap:16px">
           <section aria-labelledby="notes-title" style="padding:16px;border-radius:8px;background:var(--color-surface);border:1px solid var(--color-accent-600)">
             <h3 id="notes-title" style="font-size:11px;letter-spacing:0.08em;color:var(--color-accent-300);margin:0 0 12px;font-weight:500">הערות פנימיות</h3>
@@ -1367,11 +1373,11 @@ function renderQuestionnaireTab() {
       </div>` : "";
     const refHtml = q.ref ? `<div id="${base}-ref" style="font-size:11px;color:${mute(70)};margin-top:10px"><span class="sr-only">אסמכתא: </span>${q.ref}</div>` : "";
     return `
-      <fieldset ${describedByParts.length ? `aria-describedby="${describedByParts.join(" ")}"` : ""} style="padding:16px;border-radius:8px;background:var(--color-surface);box-shadow:var(--shadow-sm);border:0;margin:0;min-width:0">
-        <legend style="display:flex;align-items:baseline;gap:10px;padding:0;margin-bottom:6px;width:100%">
+      <fieldset aria-labelledby="${base}-legend" ${describedByParts.length ? `aria-describedby="${describedByParts.join(" ")}"` : ""} style="padding:16px;border-radius:8px;background:var(--color-surface);box-shadow:var(--shadow-sm);border:0;margin:0;min-width:0">
+        <div id="${base}-legend" style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px">
           <span style="font-size:11px;white-space:nowrap;color:${mute(70)}">${q.id}</span>
           <span style="font-weight:500;font-size:15px">${q.text}</span>
-        </legend>
+        </div>
         ${hintHtml}
         <div style="display:flex;flex-direction:column;gap:8px">${optionsHtml}</div>
         ${impactHtml}
@@ -1386,7 +1392,7 @@ function renderQuestionnaireTab() {
     </li>`).join("");
 
   return `
-  <div role="tabpanel" id="panel-questionnaire" aria-labelledby="tab-questionnaire" tabindex="0" class="q-layout" style="font-size:15px;line-height:1.6">
+  <div role="tabpanel" id="panel-questionnaire" aria-labelledby="tab-questionnaire" tabindex="0" class="split-layout" style="font-size:15px;line-height:1.6">
     <div>
       <nav aria-label="חלקי השאלון" style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:16px">${partTabsHtml}</nav>
 
