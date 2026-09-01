@@ -10,6 +10,9 @@
    כאן במלואו. ============================================================ */
 
 const CONSENT_KEY = "mirsham.consent.v1.client-a";
+// הורדה זמנית של שער ההסכמה (תקנון/מדיניות פרטיות) בכניסה — כל הלוגיקה
+// והטקסט המשפטי נשארים בקוד כרגיל; שינוי ל-true מחזיר אותם מיד.
+const CONSENT_GATE_ENABLED = false;
 
 const state = {
   screen: "login",       // login | login-dpo | clients | admin | project
@@ -660,6 +663,7 @@ function renderLoginDpo() {
 }
 
 function consentNeeded() {
+  if (!CONSENT_GATE_ENABLED) return false;
   try { return !localStorage.getItem(CONSENT_KEY); } catch (e) { return true; }
 }
 
