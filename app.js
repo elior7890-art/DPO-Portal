@@ -590,6 +590,11 @@ function renderLogin() {
         </div>
         <div style="font-size:17px;font-weight:500">מרשם</div>
         <div style="font-size:13px;color:${mute(70)}">פורטל ניהול ציות</div>
+        <span class="tag tag-accent">גרסת דמו</span>
+      </div>
+      <div role="note" style="display:flex;align-items:flex-start;gap:9px;padding:12px 14px;border-radius:8px;background:var(--color-neutral-900);font-size:13px">
+        <i class="ph ph-info" aria-hidden="true" style="color:var(--color-accent-300);font-size:16px;margin-top:2px"></i>
+        <div>זוהי גרסת הדגמה של הפורטל, לצורך סקירה בלבד. הנתונים המוצגים בדויים, אין חיבור לשרת אמיתי, ואין להזין מידע אמיתי או רגיש בשום שדה.</div>
       </div>
       <h1 style="font-size:32px;font-weight:500;margin:0">כניסה לפורטל</h1>
       <form id="login-client-form" style="display:flex;flex-direction:column;gap:14px">
@@ -630,6 +635,11 @@ function renderLoginDpo() {
         </div>
         <div style="font-size:17px;font-weight:500">מרשם</div>
         <div style="font-size:13px;color:${mute(70)}">מרחב הניהול</div>
+        <span class="tag tag-accent">גרסת דמו</span>
+      </div>
+      <div role="note" style="display:flex;align-items:flex-start;gap:9px;padding:12px 14px;border-radius:8px;background:var(--color-neutral-900);font-size:13px">
+        <i class="ph ph-info" aria-hidden="true" style="color:var(--color-accent-300);font-size:16px;margin-top:2px"></i>
+        <div>זוהי גרסת הדגמה של הפורטל, לצורך סקירה בלבד. הנתונים המוצגים בדויים, אין חיבור לשרת אמיתי, ואין להזין מידע אמיתי או רגיש בשום שדה.</div>
       </div>
       <div>
         <h1 style="font-size:32px;font-weight:500;margin:0 0 8px">כניסת ממונה הגנת פרטיות</h1>
